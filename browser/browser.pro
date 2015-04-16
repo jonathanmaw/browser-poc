@@ -67,6 +67,17 @@ HEADERS += \
     ../common/bookmark.h \
     ../common/browserdefs.h \
 
+_T = $$(TARGET_ROOT)
+!isEmpty(_T) {
+    target_root = $$(TARGET_ROOT)
+} else {
+    target_root = /usr/lib/browser-poc
+}
+
+browser.files = browser
+browser.path = $$target_root/browser
+INSTALLS += browser
+
 # Generation of the adaptor doesn't trigger properly, so this is a temp fix
 system("$$[QT_INSTALL_PREFIX]/bin/qdbusxml2cpp -i cachemanager.h\
                                                -i ../common/browserdefs.h\

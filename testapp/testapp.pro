@@ -47,3 +47,15 @@ OTHER_FILES += \
     qml/testapp/CacheManager.qml \
     qml/testapp/ErrorLogger.qml
 
+_T = $$(TARGET_ROOT)
+!isEmpty(_T) {
+    target_root = $$(TARGET_ROOT)
+} else {
+    target_root = /usr/lib/browser-poc
+}
+
+testapp.files = testapp \
+                qml \
+                images
+testapp.path = $$target_root/testapp
+INSTALLS += testapp
